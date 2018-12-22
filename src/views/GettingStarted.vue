@@ -22,6 +22,15 @@
       </ol>
       <p>You should then see the <b>Welcome</b> screen within your browser and if you do, everything should be working!</p>
 
+      <h1>Command Line Tool</h1>
+      <p>The red5 command line tool allows you to create key features in your application such as controllers and middleware. It also allows for testing and maintaining your application.</p>
+
+      <p>If you haven't already, install <code>red5-cli</code> this will then install the tool for this. This is still a work in progress and new features will be added in due time. However you can get your project started and running within a minute.</p>
+      <prism class="command-line" data-output="3-4">npm install -g red5-cli
+red5 help
+  new      Creates a new project
+  serve    Serves the current project</prism>
+
       <h1>Static Files</h1>
       <p>
         Static files are are configured to automatically be served from <code>/public</code>. Any files located in that directory will automatically be served.
@@ -37,13 +46,13 @@
 </template>
 
 <script>
-  import Prism from "vue-prism-component";
-  import Navbar from "../components/Navbar";
+import Prism from "vue-prism-component";
+import Navbar from "../components/Navbar";
 
-  export default {
-    components: {
-      Prism, Navbar
-    }
-  };
+export default {
+  components: {
+    Prism, Navbar
+  }
+};
 </script>
 
