@@ -1,9 +1,9 @@
 <template>
   <nav class="right">
     <ul>
-      <li v-for="(item, index) in items" :key="index">
-        <a v-bind:data-depth="item.depth" v-bind:href="item.url">{{item.text}}</a>
-      </li>
+    <li v-for="(item, index) in items" :key="index">
+      <a v-bind:data-depth="item.depth" v-bind:href="item.url">{{item.text}}</a>
+    </li>
     </ul>
   </nav>
 </template>
@@ -19,7 +19,7 @@ export default {
     let main = document.body.querySelector('main')
     if (main) {
       let headers = Array.from(main.querySelectorAll("h1,h2,h3,h4,h5,h6"));
-      headers.forEach(h => h.insertAdjacentHTML('beforebegin', `<a name="${this.format(h.textContent)}"></a>`))
+      headers.forEach(h => h.insertAdjacentHTML('beforebegin', `<a class="heading" name="${this.format(h.textContent)}"></a>`))
       this.items = headers.map(h => {
         return {
           text: h.textContent,
@@ -46,6 +46,18 @@ nav.right > ul {
   position: sticky;
   top: 60px;
   height: calc(100vh - 80px);
+  z-index: -1;
+}
+
+main .content h1,
+main .content h2,
+main .content h3,
+main .content h4,
+main .content h5,
+main .content h6 {
+  padding-top: 60px;
+  margin-top: -40px;
+  margin-bottom: 0;
 }
 
 nav.right a {

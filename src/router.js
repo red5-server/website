@@ -25,6 +25,16 @@ export default new Router({
       component: () => import('./views/Guide.vue')
     },
     {
+      path: '/guide/routing',
+      name: 'routing',
+      component: () => import('./views/guide/Routing.vue')
+    },
+    {
+      path: '/guide/middleware',
+      name: 'middleware',
+      component: () => import('./views/guide/Middleware.vue')
+    },
+    {
       path: '/api',
       name: 'api',
       component: () => import('./views/Api.vue')

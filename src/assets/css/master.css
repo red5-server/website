@@ -11,7 +11,7 @@ body {
   color: rgb(100, 100, 100);
 }
 
-a{
+a {
   color: #f44336;
 }
 
@@ -21,7 +21,14 @@ a{
   line-height: 2rem;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 300; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
 
 code {
   background: #f4433623;
@@ -37,4 +44,6 @@ pre > code {
   color: initial;
 }
 
-.section { height: calc(100vh - 100px); }
+.section {
+  height: calc(100vh - 100px);
+}

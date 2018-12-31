@@ -10,7 +10,13 @@ import "prismjs/plugins/command-line/prism-command-line"
 import 'prismjs/themes/prism.css'
 import "prismjs/plugins/command-line/prism-command-line.css"
 
+import Prism from 'vue-prism-component'
+import Navbar from './components/Navbar.vue'
+
 Vue.config.productionTip = false
+
+Vue.component('navbar', Navbar)
+Vue.component('prism', Prism)
 
 // router.afterEach((to, from) => {
 //   Prism.highlightAll()
