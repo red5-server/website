@@ -35,6 +35,16 @@ export default new Router({
       component: () => import('./views/guide/Middleware.vue')
     },
     {
+      path: '/guide/storage',
+      name: 'storage',
+      component: () => import('./views/guide/Storage.vue')
+    },
+    {
+      path: '/guide/sessions',
+      name: 'sessions',
+      component: () => import('./views/guide/Sessions.vue')
+    },
+    {
       path: '/api',
       name: 'api',
       component: () => import('./views/Api.vue')

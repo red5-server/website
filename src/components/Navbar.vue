@@ -1,11 +1,8 @@
-<template>
-  <nav class="right">
-    <ul>
-    <li v-for="(item, index) in items" :key="index">
-      <a v-bind:data-depth="item.depth" v-bind:href="item.url">{{item.text}}</a>
-    </li>
-    </ul>
-  </nav>
+<template lang="pug">
+  nav.right
+    ul
+      li(v-for="(item, index) in items" :key="index")
+        a(v-bind:data-depth="item.depth" v-bind:href="item.url") {{item.text}}
 </template>
 
 <script>
@@ -37,16 +34,20 @@ export default {
 };
 </script>
 
-<style>
-nav.right > ul {
-  overflow: auto;
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 80px);
-  z-index: -1;
+<style lang="scss">
+nav.right {
+  position: relative;
+  & > ul {
+    overflow: auto;
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    max-height: calc(100vh - 80px);
+    position: sticky;
+    // z-index: -1;
+    z-index: 0;
+    top: 60px;
+  }
 }
 
 main .content h1,

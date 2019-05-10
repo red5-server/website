@@ -1,5 +1,7 @@
 # red5
 
+This is the code for the red5 http server website.
+
 ## Project setup
 ```
 npm install

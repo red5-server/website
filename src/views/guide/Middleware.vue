@@ -13,13 +13,13 @@
       p Global middleware is middleware that runs on every request. This can be used for sessions, rate limiting or whatever you need to run on every request.
       p This middleware is not setup in the same way that route middleware is setup, as it is added to #[code /config/middleware.js].
       prism(language="javascript").
-        const { Session, Cookies } = require('../my-middleware.js')
+        const { Session, Cookies } = require('../app/middleware')
 
         module.exports = {
           middleware: [Session, Cookies]
         }
       h2 Route Middleware
-      p Route middleware is more common than global middleware, and is use on a pre-route basis. This is added to either the #[code group] method or one of the provided method type methods (#[code Router.get()], #[code Router.post()], etc.)
+      p Route middleware is more common than global middleware, and is use on a per-route basis. This is added to either the #[code group] method or one of the provided method type methods (#[code Router.get()], #[code Router.post()], etc.)
       prism(language='javascript').
         const { Ajax } = require('red5')
 

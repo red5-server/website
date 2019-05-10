@@ -18,10 +18,6 @@ Vue.config.productionTip = false
 Vue.component('navbar', Navbar)
 Vue.component('prism', Prism)
 
-// router.afterEach((to, from) => {
-//   Prism.highlightAll()
-// })
-
 new Vue({
   router,
   render: h => h(App),

@@ -99,58 +99,57 @@ main
         td photos.destroy
     h2 Route methods
     ul
-      li: a(href='') GET
-      li: a(href='') POST
-      li: a(href='') PUT
-      li: a(href='') DELETE
-      li: a(href='') PATCH
-      li: a(href='') HEAD
-      li: a(href='') OPTIONS
-      li #[a(href='') MATCH] &ndash; This isn't a method type, but a way to handle 2+ types
-      li #[a(href='') ANY]  &ndash; This isn't a method type, but a way to handle all types
-    h3 GET
+      li: a(href='#method-get') GET
+      li: a(href='#method-post') POST
+      li: a(href='#method-put') PUT
+      li: a(href='#method-delete') DELETE
+      li: a(href='#method-patch') PATCH
+      li: a(href='#method-head') HEAD
+      li: a(href='#method-options') OPTIONS
+      li #[a(href='#method-match') MATCH] &ndash; This isn't a method type, but a way to handle two or more method types
+      li #[a(href='#method-any') ANY]  &ndash; This isn't a method type, but a way to handle all method types
+    h3#method-get GET
     prism(language='javascript').
       Router.get('/', (client) => {
         return client.response.html('GET request to /')
       })
-    h3 POST
+    h3#method-post POST
     prism(language='javascript').
       Router.post('/', (client) => {
         return client.response.html('POST request to /')
       })
-    h3 PUT
+    h3#method-put PUT
     prism(language='javascript').
       Router.put('/', (client) => {
         return client.response.html('PUT request to /')
       })
-    h3 DELETE
+    h3#method-delete DELETE
     prism(language='javascript').
       Router.delete('/', (client) => {
         return client.response.html('DELETE request to /')
       })
-    h3 PATCH
+    h3#method-patch PATCH
     prism(language='javascript').
       Router.patch('/', (client) => {
         return client.response.html('PATCH request to /')
       })
-    h3 HEAD
-    b head
+    h3#method-head HEAD
     prism(language='javascript').
       Router.head('/', (client) => {
         return client.response.setHeader('Head-Request', 'to /')
       })
-    h3 OPTIONS
+    h3#method-options OPTIONS
     prism(language='javascript').
       Router.options('/', (client) => {
         return client.response.setHeader('Options-Request', 'to /')
       })
-    h3 MATCH
+    h3#method-match MATCH
     p The #[b match] route method allows for catching two or more specific types (#[code GET], #[code POST], etc.)
     prism(language='javascript').
       Router.match(['get', 'post'], '/', (client) => {
         return client.response.html('GET or POST request to /')
       })
-    h3 ANY
+    h3#method-any ANY
     p The #[b any] route method allows for catching any type (#[code GET], #[code POST], etc.)
     prism(language='javascript').
       Router.any('/', (client) => {
@@ -158,17 +157,20 @@ main
       })
 </template>
 
-<style>
+<style lang="scss">
 table {
   border-collapse: collapse;
-}
-table > tr > th {
-  text-align: left;
-  background-color: #eeeeee;
-}
-table > tr > th,
-table > tr > td {
-  border: solid 1px #999999;
-  padding: 0 5px;
+
+  & > tr {
+    & > th {
+      text-align: left;
+      background-color: #eeeeee;
+    }
+    & > th,
+    & > td {
+      border: solid 1px #999999;
+      padding: 0 5px;
+    }
+  }
 }
 </style>
