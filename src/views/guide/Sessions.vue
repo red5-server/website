@@ -57,7 +57,7 @@ main
       }
 
       module.exports.home = async function (client) {
-        return client.response.render('user-home.rtpl', {
+        return client.response.render('user-home.mix', {
           session: client.session.get('user')
         })
       }
