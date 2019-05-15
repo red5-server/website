@@ -7,12 +7,18 @@
         li
           router-link(to='/guide') Guide
           .sub-content
-            div
-              ul
-                li: router-link(to='/guide/routing') Routing
-                li: router-link(to='/guide/middleware') Middleware
-                li: router-link(to='/guide/storage') Storage
-                li: router-link(to='/guide/sessions') Sessions
+            .columns
+              div
+                ul
+                  li: h3 API
+                  li: router-link(to='/guide/routing') Routing
+                  li: router-link(to='/guide/middleware') Middleware
+                  li: router-link(to='/guide/storage') Storage
+                  li: router-link(to='/guide/sessions') Sessions
+              div
+                ul
+                  li: h3 Tutorials
+                  li: router-link(to='/tutorials/uploads') File Uploads
         li: router-link(to='/api') API Reference
     router-view
     footer
@@ -45,6 +51,7 @@ nav.top {
     display: flex;
     flex-direction: row;
     list-style-type: none;
+
     & > li > a {
       display: inline-block;
       padding: 1rem 1.5rem;
@@ -69,15 +76,27 @@ nav.top {
     background: #292929;
     padding: 5vh 0;
 
-    & > div:first-child {
-      width: 25vw;
-      position: relative;
-      left: 0;
-      right: 0;
-      margin: auto;
+    & > .columns {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      & > div {
+        width: 200px;
+      }
+      & li > h3 {
+        color: #f44336;
+      }
     }
 
-    & > div > ul {
+    // & > div:first-child {
+    //   width: 25vw;
+    //   position: relative;
+    //   left: 0;
+    //   right: 0;
+    //   margin: auto;
+    // }
+
+    & > .columns > div > ul {
       list-style-type: none;
       & > li > a:hover {
         /* background: #ee2012; */
@@ -87,7 +106,7 @@ nav.top {
 
     & div > ul > li > a {
       color: #ffffff;
-      padding: 5px 10px;
+      padding: 5px 0;
       font-size: 0.9rem;
       text-decoration: none;
       display: block;
@@ -109,5 +128,13 @@ footer {
   background: #292929;
   min-height: 20vh;
   margin-top: 5vh;
+}
+
+.warn {
+  background: #feffde;
+  color: #292929;
+  // border: solid 1px #f6b73c;
+  border-left: solid 5px #ffeb8e;
+  padding: 10px;
 }
 </style>
