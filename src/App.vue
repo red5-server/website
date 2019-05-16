@@ -15,10 +15,12 @@
                   li: router-link(to='/guide/middleware') Middleware
                   li: router-link(to='/guide/storage') Storage
                   li: router-link(to='/guide/sessions') Sessions
+                  li: router-link(to='/guide/mysql') MySQL Database
               div
                 ul
                   li: h3 Tutorials
                   li: router-link(to='/tutorials/uploads') File Uploads
+                  li: router-link(to='/tutorials/login') User Logins
         li: router-link(to='/api') API Reference
     router-view
     footer

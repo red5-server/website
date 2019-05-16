@@ -5,6 +5,7 @@ import router from './router'
 import 'prismjs'
 
 import "prismjs/components/prism-bash"
+import "prismjs/components/prism-sql"
 import "prismjs/plugins/command-line/prism-command-line"
 
 import 'prismjs/themes/prism.css'

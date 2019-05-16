@@ -67,9 +67,10 @@
           let img = client.data.files('image')
 
           // This will move the file from tmp storage to the location
-          // of where we want to actually store the file.
+          // of where we want to actually store the file. In this case,
+          // we want to store the file in local storage.
           await Storage.mount('local')
-            .moveFrom('tmp', img.tmpFilename, path.join('test', img.filename))
+            .moveFrom('tmp', img.tmpStoragePath, path.join('test', img.filename))
 
           // Redirect the user to a success page
           return client.response.redirect.to('upload-success')

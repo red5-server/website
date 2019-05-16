@@ -29,6 +29,9 @@ export default new Router({
       name: 'api',
       component: () => import('./views/Api.vue')
     },
+    ////////////////////////////////////////////////////////////////////////////
+    /// Guides
+    ////////////////////////////////////////////////////////////////////////////
     {
       path: '/guide/routing',
       name: 'routing',
@@ -49,11 +52,23 @@ export default new Router({
       name: 'sessions',
       component: () => import('./views/guide/api/Sessions.vue')
     },
-
+    {
+      path: '/guide/mysql',
+      name: 'mysql',
+      component: () => import('./views/guide/api/Mysql.vue')
+    },
+    ////////////////////////////////////////////////////////////////////////////
+    /// Tutorials
+    ////////////////////////////////////////////////////////////////////////////
     {
       path: '/tutorials/uploads',
       name: 'uploads',
       component: () => import('./views/guide/tutorials/Uploads.vue')
+    },
+    {
+      path: '/tutorials/login',
+      name: 'login',
+      component: () => import('./views/guide/tutorials/Login.vue')
     }
   ]
 })

@@ -41,7 +41,6 @@ main
       li: code /settings/profile
       li: code /settings/notifications
     p This can be taken further by adding some middleware to the group. For example if we want to protect these routes to logged in users only, we could create an #[code Auth] middleware that checks your logged in status and applies it to the group as a whole instead of each route individually.
-      code Auth
     prism(language='javascript').
       const { Auth } = require('../middleware/Auth.js')
 
