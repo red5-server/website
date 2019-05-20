@@ -25,19 +25,55 @@ export default new Router({
       component: () => import('./views/Guide.vue')
     },
     {
+      path: '/api',
+      name: 'api',
+      component: () => import('./views/Api.vue')
+    },
+    ////////////////////////////////////////////////////////////////////////////
+    /// Guides
+    ////////////////////////////////////////////////////////////////////////////
+    {
       path: '/guide/routing',
       name: 'routing',
-      component: () => import('./views/guide/Routing.vue')
+      component: () => import('./views/guide/api/Routing.vue')
     },
     {
       path: '/guide/middleware',
       name: 'middleware',
-      component: () => import('./views/guide/Middleware.vue')
+      component: () => import('./views/guide/api/Middleware.vue')
     },
     {
-      path: '/api',
-      name: 'api',
-      component: () => import('./views/Api.vue')
-    }
+      path: '/guide/storage',
+      name: 'storage',
+      component: () => import('./views/guide/api/Storage.vue')
+    },
+    {
+      path: '/guide/sessions',
+      name: 'sessions',
+      component: () => import('./views/guide/api/Sessions.vue')
+    },
+    // {
+    //   path: '/guide/mysql',
+    //   name: 'mysql',
+    //   component: () => import('./views/guide/api/Mysql.vue')
+    // },
+    ////////////////////////////////////////////////////////////////////////////
+    /// Tutorials
+    ////////////////////////////////////////////////////////////////////////////
+    {
+      path: '/tutorials/uploads',
+      name: 'uploads',
+      component: () => import('./views/guide/tutorials/Uploads.vue')
+    },
+    {
+      path: '/tutorials/plugins',
+      name: 'plugins',
+      component: () => import('./views/guide/tutorials/Plugins.vue')
+    },
+    // {
+    //   path: '/tutorials/login',
+    //   name: 'login',
+    //   component: () => import('./views/guide/tutorials/Login.vue')
+    // }
   ]
 })

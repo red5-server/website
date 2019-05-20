@@ -2,11 +2,6 @@
   .welcome.section
     h1 #[span Red]5 Http Server
 </template>
-  <!-- <div class="welcome section">
-    <h1>
-      <span>Red</span>5 Http Server
-    </h1>
-  </div> -->
 
 <style>
 .welcome {

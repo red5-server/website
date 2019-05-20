@@ -1,11 +1,8 @@
-<template>
-  <nav class="right">
-    <ul>
-    <li v-for="(item, index) in items" :key="index">
-      <a v-bind:data-depth="item.depth" v-bind:href="item.url">{{item.text}}</a>
-    </li>
-    </ul>
-  </nav>
+<template lang="pug">
+  nav.right
+    ul
+      li(v-for="(item, index) in items" :key="index")
+        a(v-bind:data-depth="item.depth" v-bind:href="item.url") {{item.text}}
 </template>
 
 <script>
@@ -37,16 +34,20 @@ export default {
 };
 </script>
 
-<style>
-nav.right > ul {
-  overflow: auto;
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 80px);
-  z-index: -1;
+<style lang="scss">
+nav.right {
+  position: relative;
+  & > ul {
+    overflow: auto;
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    max-height: calc(100vh - 80px);
+    position: sticky;
+    // z-index: -1;
+    z-index: 0;
+    top: 60px;
+  }
 }
 
 main .content h1,
@@ -78,23 +79,23 @@ nav.right a[data-depth="1"] {
   font-size: 1rem;
 }
 nav.right a[data-depth="2"] {
-  padding-left: 0.5rem;
+  padding-left: 1rem;
   font-size: 0.95rem;
 }
 nav.right a[data-depth="3"] {
-  padding-left: 1rem;
+  padding-left: 2rem;
   font-size: 0.9rem;
 }
 nav.right a[data-depth="4"] {
-  padding-left: 1.5rem;
+  padding-left: 3rem;
   font-size: 0.85rem;
 }
 nav.right a[data-depth="5"] {
-  padding-left: 2rem;
+  padding-left: 4rem;
   font-size: 0.8rem;
 }
 nav.right a[data-depth="6"] {
-  padding-left: 2.5rem;
+  padding-left: 5rem;
   font-size: 0.75rem;
 }
 </style>
