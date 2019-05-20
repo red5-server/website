@@ -4,12 +4,33 @@
     .content
       h1 Middleware
       p Middleware is a way of running one or more processes before the controller is executed. This is helpful for deciding on how a request should be handled before the controller runs. For example should this request be ajax only? If so, a middleware could be added to the route that sends the user a #[code 400] error if the request isn't sent via ajax.
-      p There are three types of middleware:
+      h2 Defining Middleware
+      p The following will perform middleware #[b before] the request is handled.
+      prism(language='javascript').
+        module.exports = {
+          handle (client) {
+
+            // Perform the task
+
+            return true
+          }
+        }
+      p However, this will perform the task #[b after] the request is handled.
+      prism(language='javascript').
+        module.exports = {
+          postHandle (client) {
+
+            // Perform the task
+
+            return true
+          }
+        }
+      h2 Middleware Types
+      p There are two types of middleware:
       ol
         li Global middleware
         li Route middleware
-        li Middleware Groups
-      h2 Global Middleware
+      h3 Global Middleware
       p Global middleware is middleware that runs on every request. This can be used for sessions, rate limiting or whatever you need to run on every request.
       p This middleware is not setup in the same way that route middleware is setup, as it is added to #[code /config/middleware.js].
       prism(language="javascript").
@@ -18,7 +39,7 @@
         module.exports = {
           middleware: [Session, Cookies]
         }
-      h2 Route Middleware
+      h3 Route Middleware
       p Route middleware is more common than global middleware, and is use on a pre-route basis. This is added to either the #[code group] method or one of the provided method type methods (#[code Router.get()], #[code Router.post()], etc.)
       prism(language='javascript').
         const { Ajax } = require('red5')
