@@ -21,6 +21,7 @@
                   li: h3 Tutorials
                   li: router-link(to='/tutorials/uploads') File Uploads
                   li: router-link(to='/tutorials/login') User Logins
+                  li: router-link(to='/tutorials/plugins') Plugins
         li: router-link(to='/api') API Reference
     router-view
     footer
