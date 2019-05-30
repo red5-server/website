@@ -48,13 +48,35 @@ main
         Router.get('/profile', 'Settings@profile')
         Router.get('/notifications', 'Settings@notifications')
       })
+    h2 Route Domains
+    p.warn #[code Router.domain()] is not intended for mixing two or more unrelated websites together. Its main purpose is to separate routes into two or more domains/sub-domains that share content such as views, controllers, middleware, etc.
+    p A route domain is a way to handle multiple domains/sub-domains that access the routes. For example #[code example.com] and #[code api.example.com]. The two routes both share the same configuration, database, sessions, etc. but you probably don't want them to share routes.
+    p So, to separate the two we use #[code Router.domain()] which will add the routes to a particular domain.
+    p.warn #[code Router.domain()] calls should not be nested within other #[code Router.domain()] calls.
+    prism(language='javascript').
+      // These routes are only accessible from 'http://example.com'
+      Router.domain('example.com', () => {
+        Router.get('/users', 'users@web')
+      })
+
+      // These routes are only accessible from 'http://api.example.com'
+      Router.domain('api.example.com', () => {
+        Router.get('/users', 'users@api')
+        Router.post('/login', 'users@login')
+      })
+
+      // This route is accessible from any domain
+      Router.get('/', 'welcome')
+    p These two domains share a similar route #[code /users], so the triggered route is dependent on the domain that called it.
+    p #[code api.example.com] has an extra route #[code /login], and if it is accessed from #[code example.com] a #[code 404] will be returned.
+    p There is also a route outside of the domain spec. These are routes that can be accessed by both #[code example.com] and #[code api.example.com].
     h2 Route Resources
     p A route resource is a way to create a group of routes that all relate to one another. A resource takes two parameters each of which are strings.
     ul
       li #[code name] &ndash; This is the name of the resource, it is also part of the path
       li #[code controller] &ndash; This is the controller which is the name of the class with the actions predefined
     prism(language='javascript').
-      Router.resource(&apos;photos&apos;, &apos;Photos&apos;)
+      Router.resource('photos', 'Photos')
     table
       tr
         th(style='width: 100px') Method

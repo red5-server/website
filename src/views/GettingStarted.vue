@@ -37,9 +37,92 @@ main
         serve     Serves the current project
     h1 Static Files
     p Static files are are configured to automatically be served from #[code /public]. Any files located in that directory will automatically be served.
-    p Additional paths can be setup by editing #[code /config/app.js] and adding paths to the #[code static] option as an array
-    prism(language="javascript").
-      module.exports = {
-        static: ['/path/to/static/files']
+    //- p Additional paths can be setup by editing #[code /config/app.js] and adding paths to the #[code static] option as an array
+    //- prism(language="javascript").
+    //-   module.exports = {
+    //-     static: ['/path/to/static/files']
+    //-   }
+    h1 Web Servers
+    p red5 runs on the default port #[code 5000], so to access it you need to know the port. This is fine during development, but as a public facing website you most likely don't want that. To fix this we need to place the red5 server behind a web server such as Nginx.
+    h2 Nginx
+    p Nginx is a fast lightweight server that is easy to use on linux servers.
+    p First you will want to install and create a new configuration file:
+    prism(language='bash').
+      # Install nginx if it hasn't already been installed
+      sudo apt install nginx
+
+      # Create a new configuration file
+      sudo vim /etc/nginx/sites-available/example.com
+    p Within the configuration file add the following content, replacing #[code example.com] with your domain name and #[code 5000] with the actual port that you are running the red5 server on.
+    prism(language='nginx').
+      server {
+        # Setup the domain name(s)
+        # Each domain is separated by a space
+        # Since red5 supports domain routing, multiple domains can share the same port
+        # Note: Unrelated domains should have their own port and red5 project
+        server_name example.com api.example.com;
+        listen 80;
+
+        # Setup the proxy
+        # This will forward all requests to the red5 http server
+        # and then it will relay the servers response back to the client
+        location / {
+          proxy_pass http://127.0.0.1:5000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_cache_bypass $http_upgrade;
+        }
       }
+    p We will want to create a symbolic link to this file so that we can enable/disable this domain without deleting the file itself, and just add/remove the symbolic link.
+    prism(language='bash').
+      # CD to nginx "sites-enabled" directory
+      cd /etc/nginx/sites-enabled
+
+      # Create the symbolic link
+      ln -s ../sites-available/example.com ./example.com
+    p Finally we start both of the services and test the domain (assuming it has already propagated).
+    prism(language='bash').
+      # Start the red5 http server
+      pm2 start /path/to/ecosystem.config.js
+
+      # Start the nginx service
+      sudo service nginx start
+    h2 Apache
+    p Apache is a popular server that works well on all platforms though it isn't lightweight like Nginx.
+    p First we will start by installing apache if it hasn't already been installed, then we will create the configuration file.
+    prism(language='bash').
+      # Install apache if it hasn't already been installed
+      sudo apt install apache2
+
+      vim /etc/apache2/sites-available/example.conf
+    p So first we create a new virtual host, replacing #[code example.com] with your domain name and #[code 5000] with the actual port that you are running the red5 server on.
+    prism(language='apacheconf').
+      &lt;VirtualHost *:80&gt;
+        # Setup the domain name(s)
+        # Since red5 supports domain routing, multiple domains can share the same port
+        # Note: Unrelated domains should have their own port and red5 project
+        ServerName example.com
+        ServerAlias api.example.com
+
+        # Setup the proxy
+        # This will forward all requests to the red5 http server
+        # and then it will relay the servers response back to the client
+        ProxyPass http://127.0.0.1:5000
+
+        ProxyPreserveHost On
+      &lt;/VirtualHost&gt;
+    p You must also have the modules enabled within the master apache config file:
+    prism(language='apacheconf').
+      LoadModule proxy_module modules/mod_proxy.so
+      LoadModule proxy_http_module modules/mod_proxy_http.so
+    p Finally we start both of the services and test the domain (assuming it has already propagated).
+    prism(language='bash').
+      # Start the red5 http server
+      pm2 start /path/to/ecosystem.config.js
+
+      # Start the apache service
+      sudo service apache2 start
 </template>
