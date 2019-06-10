@@ -39,13 +39,8 @@
         module.exports = {
           middleware: [Session, Cookies]
         }
-<<<<<<< HEAD:src/views/guide/Middleware.vue
-      h3 Route Middleware
-      p Route middleware is more common than global middleware, and is use on a pre-route basis. This is added to either the #[code group] method or one of the provided method type methods (#[code Router.get()], #[code Router.post()], etc.)
-=======
       h2 Route Middleware
       p Route middleware is more common than global middleware, and is use on a per-route basis. This is added to either the #[code group] method or one of the provided method type methods (#[code Router.get()], #[code Router.post()], etc.)
->>>>>>> 610ff9b0648385afe94d81d5f829389fca8f3b10:src/views/guide/api/Middleware.vue
       prism(language='javascript').
         const { Ajax } = require('red5')
 

@@ -16,16 +16,16 @@
 
       prism(language="javascript").
         Router.group('/upload', () => {
-          Router.get('/', 'upload').name('upload-form')
-          Router.post('/handle', 'upload@handle').name('upload-handle')
+          Router.get('upload').name('upload-form')
+          Router.post('/handle', 'upload@handle').name('upload-handler')
           Router.get('/success', 'upload@success').name('upload-success')
         })
 
       h2 The Upload Form
-      p Lets add a route handler to display our form that we will create below
+      p Lets add a route handler to display our form that we will create below in the file #[code app/controllers/upload.js]
       prism(language="javascript").
         const path = require('path')
-        const { route } = require('red5/router')
+        const { route } = require('@red5/router')
         const { Storage } = require('@red5/storage')
 
         module.exports.main = async function (client) {
@@ -33,7 +33,7 @@
             // This is the location of where we will upload the file to.
             // We will use this variable within the template so if the route path changes
             // the form action will automatically change as well.
-            location: route('upload-handle')
+            location: route('upload-handler')
           })
         }
 
@@ -52,10 +52,10 @@
   </html>`)
       h2 The Upload Handler
       p The storage driver has a built in disk called #[code tmp] that points to the operating system's #[b tmp directory]. We will use that here to move the file from the #[b tmp directory] to the actual location of where we want the file to be stored.
-      p.warn There are multiple commands that move a file from one storage driver to another. The best one to use when uploading a file is #[code moveFile()], as this will also remove the file from the #[b sorce directory]. Using #[code copyFile()] will keep the file within the #[b source directory].
+      p.warn There are multiple commands that move a file from one storage driver to another. The best one to use when uploading a file is #[code moveFrom()], as this will also remove the file from the #[b source directory]. Using #[code copyFrom()] will keep the file within the #[b source directory].
       prism(language="javascript").
         const path = require('path')
-        const { route } = require('red5/router')
+        const { route } = require('@red5/router')
         const { Storage } = require('@red5/storage')
 
         // module.exports.main = ...
@@ -81,7 +81,7 @@
       p Once the upload completes, we will let the user know by rendering a page that lets the user know that their upload completed successfully.
       prism(language="javascript").
         const path = require('path')
-        const { route } = require('red5/router')
+        const { route } = require('@red5/router')
         const { Storage } = require('@red5/storage')
 
         // module.exports.main = ...
