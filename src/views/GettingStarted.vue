@@ -3,9 +3,9 @@ main
   navbar
   .content
     h1 Installation
-    p Horse Power can be installed multiple ways. Choosing the way you wish to install is up to you.
+    p Horsepower can be installed multiple ways. Choosing the way you wish to install is up to you.
     h2 Command Line Tool
-    p Horse Power can be installed using the command line tool, and having installed all of the prerequisites, creating an application is very easy using #[code horsepower-cli]
+    p Horsepower can be installed using the command line tool, and having installed all of the prerequisites, creating an application is very easy using #[code horsepower-cli]
     prism.command-line(language="bash").
       npm install -g horsepower-cli
     p Next all that needs to be done is to run the #[code new] command to create a new project
@@ -14,8 +14,8 @@ main
     p The following process will then run:
     ol
       li A folder will be created called #[code hello-world] in the current directory
-      li Horse Power will be downloaded into the #[code hello-world] folder
-      li All of the dependencies of Horse Power will be downloaded
+      li Horsepower will be downloaded into the #[code hello-world] folder
+      li All of the dependencies of Horsepower will be downloaded
       li A temporary server will be started
       li The url #[code http://localhost:5000] will be opened in a new browser window
     p You should then see the #[b Welcome] screen within your browser and if you do, everything should be working!

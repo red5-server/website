@@ -5,7 +5,7 @@
     navbar
     .content
       h1 User Logins
-      p Many websites have a members area that require specific credentials to access this location. Horse Power makes logins simple.
+      p Many websites have a members area that require specific credentials to access this location. Horsepower makes logins simple.
       p In our login system, we will make four routes:
       ul
         li A route to display a login form
