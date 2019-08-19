@@ -42,14 +42,14 @@
       h2 Route Middleware
       p Route middleware is more common than global middleware, and is use on a per-route basis. This is added to either the #[code group] method or one of the provided method type methods (#[code Router.get()], #[code Router.post()], etc.)
       prism(language='javascript').
-        const { Ajax } = require('red5')
+        const { Ajax } = require('horsepower')
 
         Router.get('/', { middleware: [Ajax] }, (client) =>
           client.response.html('Hello World')
         )
       p Instead of defining the same middleware on every route, a group can be used to define middleware on a group of routes.
       prism(language='javascript').
-        const { Ajax } = require('red5')
+        const { Ajax } = require('horsepower')
 
         Router.group({ middleware: [Ajax] }, () => {
           Router.get('/ping', (client) => client.response.html('pong'))

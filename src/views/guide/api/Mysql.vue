@@ -3,13 +3,13 @@ main
   navbar
   .content
     h1 MySQL
-    p The MySQL database package is one of the optional packages that is available for the red5 server. It allows you to connect to the database and make queries against it by selecting, updating, deleting and inserting items. The package comes with many great features that allow you to write queries using built in methods aka the query builder. The package also contains Models so you can modify your table by using a model.
+    p The MySQL database package is one of the optional packages that is available for the horsepower server. It allows you to connect to the database and make queries against it by selecting, updating, deleting and inserting items. The package comes with many great features that allow you to write queries using built in methods aka the query builder. The package also contains Models so you can modify your table by using a model.
     h2 Configuration
     p The database is configured using the config file #[code config/db.js]. Within that file you can setup your database connection information.
     p The export has a named item, it can be whatever you would like. So we added one called #[code mysql], and setup the database settings for that driver within that object.
     p.warn You can have multiple #[b default] items in this config but they must be for different drivers. That means that each driver type may only have one #[b default]. If there is more than one default for a driver, then an error will be thrown.
     prism(language="javascript").
-      const { env } = require('@red5/server')
+      const { env } = require('@horsepower/server')
 
       module.exports = {
         mysql: {

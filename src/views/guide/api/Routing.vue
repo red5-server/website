@@ -5,7 +5,7 @@ main
     h1 Routing
     p #[b Routing] refers to how an application’s endpoints (URIs) respond to client requests.
     prism(language='javascript').
-      const { Router } = require('red5')
+      const { Router } = require('horsepower')
 
       Router.get('/', (client) => {
         return client.response.html('Hello World')

@@ -4,7 +4,7 @@ main
   .content
     h1 Storage
     p Storage is a factory that allows for easily accessing multiple storage types. This could be a local file storage location, a cloud file storage location or even a mongodb file storage. As long as the correct driver is installed and setup you can access any file system.
-    p @red5/storage comes built with three storage drivers.
+    p @horsepower/storage comes built with three storage drivers.
     ul
       li #[code file] &ndash; for accessing the current machines file system (or remote machine using http)
       li #[code mongo] &ndash; for accessing a mongodb file system using GridFS
@@ -12,7 +12,7 @@ main
     h2 Configuration
     p Storage is configured within #[code config/storage.js]. Within the file there is an option labeled #[code disks] which is an object containing a list of disks that can be used where the key is the name of the disk.
     prism(language='javascript').
-      const { applicationPath, storagePath, env } = require('@red5/server')
+      const { applicationPath, storagePath, env } = require('@horsepower/server')
 
       module.exports = {
         // This is the default driver that will be used if one isn't manually mounted
@@ -81,7 +81,7 @@ main
     p We can then #[code mount('public')] and call #[code load('master.css')] to load the file.
 
     prism(language='javascript').
-      const { Storage } = require('@red5/storage')
+      const { Storage } = require('@horsepower/storage')
 
       module.exports.main = async function (client) {
         // See the configuration above for the location of "public".
@@ -92,7 +92,7 @@ main
     p It is also possible to omit #[code mount()] if you want to use the default driver. In this case, since the css is in the #[code public] directory, it will not be able to load it unless we move the file to the location of #[code mount('local')] since #[code local] is the default driver.
 
     prism(language='javascript').
-      const { Storage } = require('@red5/storage')
+      const { Storage } = require('@horsepower/storage')
 
       module.exports.main = async function (client) {
         // This uses "local" as the driver because it is set as the default.

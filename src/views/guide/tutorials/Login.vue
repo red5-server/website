@@ -5,7 +5,7 @@
     navbar
     .content
       h1 User Logins
-      p Many websites have a members area that require specific credentials to access this location. Red5 makes logins simple.
+      p Many websites have a members area that require specific credentials to access this location. Horse Power makes logins simple.
       p In our login system, we will make four routes:
       ul
         li A route to display a login form
@@ -14,12 +14,10 @@
         li A route to display the users member area
       h2 The routes
       prism(language="javascript").
-        const { Router, route } = require('@red5/router')
+        const { Router } = require('@horsepower/router')
 
         // This route will render the login page for our user
-        Router.get('/login', client => client.response.render('login.mix', {
-          location: route('login-handle')
-        })).name('login')
+        Router.get('/login', client => client.response.render('login.mix')).name('login')
 
         // We will create a login route to validate the users login
         // If the login is successful we will redirect the user to the main page
@@ -30,9 +28,7 @@
         Router.post('/logout', 'User@logout').name('logout-handle')
 
         // This will render the users home page with information about that user
-        Router.get('/home', client => client.response.render('home.mix', {
-          location: route('logout-handle')
-        })).name('user-home')
+        Router.get('/home', client => client.response.render('home.mix')).name('user-home')
 
       h2 The controllers
       p We have two controllers here, one will handle the login for the user and the other will handle the logout for the user.
@@ -40,7 +36,7 @@
       p The login controller will get the users input from the login form, it will then check the database to see if the user exists with those credentials. If the user exists a user will be returned, otherwise nothing will be returned.
       p If nothing is returned, then we will redirect the user back to the login page. Otherwise, we will create the session data and redirect the user to the members area.
       prism(language="javascript").
-        const { DB } = require('@red5/mysql')
+        const { DB } = require('@horsepower/mysql')
 
         module.exports.login = async function (client) {
           // Get the username and password
@@ -85,7 +81,7 @@
         +escape(`<html>
     <head><title>User Login</title></head>
     <body>
-      <form method="post" action="{{'\\{\\{$location\\}\\}'}}">
+      <form method="post" action="{{'\\{\\{route(\\\'login-handle\\\')\\}\\}'}}">
         <p>Username: <input type="text" name="username" placeholder="What is your username?"></p>
         <p>Password: <input type="password" name="password" placeholder="What is your password?"></p>
         <p><input type="submit" value="Login"></p>
@@ -102,7 +98,7 @@
     <body>
       <h1>Welcome {{'\\{\\{$session.username\\}\\}'}}</h1>
       <p>Welcome to your members area where this page is all about you!</p>
-      <p><a href="{{'\\{\\{$location\\}\\}'}}">Logout</a></p>
+      <p><a href="{{'\\{\\{route(\\\'logout-handle\\\')\\}\\}'}}">Logout</a></p>
     </body>
   </html>`)
 </template>

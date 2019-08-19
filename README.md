@@ -1,6 +1,6 @@
-# red5
+# horsepower
 
-This is the code for the red5 http server website.
+This is the code for the horsepower http server website.
 
 ## Project setup
 ```

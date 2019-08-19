@@ -3,7 +3,7 @@ main
   navbar
   .content
     h1 Sessions
-    p @red5/session is a way to persist data from one request to another. There is many usages for using sessions, such as when your site has users that login/logout or maybe you want to remember a shopping cart. Sessions can be used here for making data persist from one page request to another.
+    p @horsepower/session is a way to persist data from one request to another. There is many usages for using sessions, such as when your site has users that login/logout or maybe you want to remember a shopping cart. Sessions can be used here for making data persist from one page request to another.
     h2 Configuration
     p Sessions need to be configured through one and optionally two configurations. The main configuration is the #[code config/session.js] which describes how sessions need to work. The second optional config is the #[code config/storage.js] config when you store the sessions using a #[code file] store.
     prism(language="javascript").
@@ -28,11 +28,11 @@ main
         }
       }
     h2 Usage
-    p Sessions need to be started upon every request in order to use them. Thankfully there is middleware for that we can use that will do this for us (red5 automatically closes open sessions after the response is sent if it has not already been ended).
+    p Sessions need to be started upon every request in order to use them. Thankfully there is middleware for that we can use that will do this for us (horsepower automatically closes open sessions after the response is sent if it has not already been ended).
     p In the following example we will assume that our website has a public facing side and a members facing side. On the members facing side we will work with sessions, and on the public side we will not.
     prism(language="javascript").
-      const { Router } = require('@red5/router')
-      const { StartSession } = require('@red5/middleware')
+      const { Router } = require('@horsepower/router')
+      const { StartSession } = require('@horsepower/middleware')
 
       // These pages do not require a session, so we will not start one
       Router.get('/', 'welcome').name('welcome')
